@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: ui-serif !important;
+}
+
+a {
+  text-decoration: none !important;
+  color: #fff;
+}
+
+.brand:hover {
+  background-color: transparent !important;
+}
