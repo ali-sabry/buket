@@ -2,7 +2,7 @@
   "name": "done",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/buket",
+  "homepage": "https://buket.netlify.app",
   "dependencies": {
     "@chec/commerce.js": "^2.8.0",
     "@emotion/react": "^11.9.0",

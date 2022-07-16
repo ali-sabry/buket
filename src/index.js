@@ -9,7 +9,7 @@ import { ContextProvider } from 'store/Context';
 
 ReactDom.render(
    <ContextProvider>
-      <BrowserRouter basename='/buket'>
+      <BrowserRouter>
         <App />
       </BrowserRouter>
    </ContextProvider>,
