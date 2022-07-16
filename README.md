@@ -1,5 +1,5 @@
 # Project Name
-	Buket Ecommerce  🎬 App
+	Buket Ecommerce App 🛒
 
 # Demo link
  Preview App Demo [Buket_Ecommerce_App](https://buket.netlify.app)
