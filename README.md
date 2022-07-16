@@ -2,7 +2,7 @@
 	Buket Ecommerce  🎬 App
 
 # Demo link
- Preview App Demo [Buket_Ecommerce_App](https://buket.netlify.app/)
+ Preview App Demo [Buket_Ecommerce_App](https://buket.netlify.app)
 
 ## Table of Content: 📑
 - [Project Name](#project-name)
