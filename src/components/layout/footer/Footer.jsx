@@ -12,7 +12,7 @@ const FooterBar = styled("footer")(
 	border-top: 1px solid ${theme.palette.colors.textColor};
   
   p {
-    font-size: 25px;
+    font-size: 19px;
   };
 
 	a {
@@ -25,7 +25,7 @@ const FooterBar = styled("footer")(
    @media screen and (max-width: 576px) {
   	 margin-bottom: ${margin - 15}px;
      p {
-      font-size: 20px;
+      font-size: 18px;
      }
    };
 `

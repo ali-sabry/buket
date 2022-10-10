@@ -1,15 +1,13 @@
 # Project Name
-	Buket Ecommerce  🎬 App
+	Buket Ecommerce App 🛒
 
 # Demo link
  Preview App Demo [Buket_Ecommerce_App](https://buket.netlify.app)
 
 
 ## Table of Content: 📑
-- [Project Name](#project-name)
-- [Demo link](#demo-link)
-	- [Table of Content: 📑](#table-of-content-)
-	- [About The App: 📚](#about-the-app-)
+
+-	- [About The App: 📚](#about-the-app-)
 	- [Screenshots: 📷](#screenshots-)
 	- [Technologies & Languages:  ☕️ 🐍 ⚛️🧪📲](#technologies--languages--️--️)
 	- [Approach: 🚶](#approach-)
@@ -23,9 +21,10 @@
 
 ## About The App: 📚
 
-**Buket Ecommerce  App** Is 
-
-movie story and save your favorite movie to favorite page, change between light & dark mode.
+**Buket Ecommerce App** : <br />
+Is a fully functional Ecommerce website with search, categories, discover products, <br />
+cart [add, remove, increase || decrease QTY, checkout ], <br /> 
+save your favorite products to wishlist page, change between light & dark theme .
 
 ## Screenshots: 📷
 
@@ -40,37 +39,23 @@ movie story and save your favorite movie to favorite page, change between light 
 - html
 - css
 - react
-- react icons
 - react router
 - commerce js
 - material ui
-- styled component
-
+- material icons
+- stripe
 
 ## Approach: 🚶
- I tried to implement most of react features like:
+
+- I want to build fully functional Ecommerce website with the help of commerce.js that handle the checkout process <br />
+- That's what let me focus on building the ui
+- I tried to implement most of react features like:
+> react-router | nested-router | react hooks | react-context | use-location | and more ...
 	
-> react-router | nested-router | react hooks | react-context | use-location | Custom Hook | and more ...
-	
-
-## Some challenges when i code this app:
- 
-  ### 1- localStorage: 
- 
-   I wanted to save dark mode status & save favorites 
-
-`localStorage.setItem("test");`
-
-
-  ### 2- Custom hook:
-  I wanted to fetch diffrent resources 			like ( Trending | Popular | etc... ) 		movies.
- - So I created custom hook [ useFetching ] helped me to fetch diffrent urls across the app.( Appling DRY (don't repeat your self) concept )
- - ` using 👉	const { Data, isLoading, isError } = useFetching( url ) .`
-
 
 ## Credits Contributors images: 📝
 
->![GitHub Contributors Image](https://contrib.rocks/image?repo=ali-sabry/inbio-portfolio)
+>![GitHub Contributors Image](https://contrib.rocks/image?repo=ali-sabry/buket)
 
 ## Fix issues or add some features:  💻
 	- download or clone the repository
