@@ -25,13 +25,14 @@ const App = () => {
 
   useEffect(() => {
     ProductsCtx.RetriveProduct();
+
     if (localStorage.getItem("Ecomerce_Shop") !== null) {
       const data = localStorage.getItem("Ecomerce_Shop");
       ProductsCtx.SetAllFavorites(JSON.parse(data));
     }
-    if (localStorage.getItem("DarkModeStatus") !== null || undefined) {
-      const IsDark = localStorage.getItem("DarkModeStatus") === "false";
-      ProductsCtx.SetDarkModeStatus(IsDark);
+
+    if (localStorage.getItem("DarkModeStatus")) {
+      ProductsCtx.SetDarkModeStatus(JSON.parse(localStorage.getItem("DarkModeStatus")));
     }
   }, []);
 
@@ -47,22 +48,22 @@ const App = () => {
   }, [ProductsCtx.Cart]);
 
   return (
-      <ThemeProvider theme={ProductsCtx.customTheme}>
+    <ThemeProvider theme={ProductsCtx.customTheme}>
       <CssBaseline />
-        <AppWrapper>
+      <AppWrapper>
         <Header />
-          <Routes>
-            <Route path="/" element={<Products />}></Route>
-            <Route path="/index.html" element={<Products />}></Route>
-            <Route path="/cart" element={<Cart />}></Route>
-            <Route path="/checkout" element={<Checkout />}></Route>
-            <Route path="/wishlist" element={<Wishlist />}></Route>
-            <Route path="/details/:id" element={<Product />}></Route>
-            <Route path="*" element={<NotFound />}></Route>
-          </Routes>
-        </AppWrapper>
-        <Footer />
-      </ThemeProvider>
+        <Routes>
+          <Route path="/" element={<Products />}></Route>
+          <Route path="/index.html" element={<Products />}></Route>
+          <Route path="/cart" element={<Cart />}></Route>
+          <Route path="/checkout" element={<Checkout />}></Route>
+          <Route path="/wishlist" element={<Wishlist />}></Route>
+          <Route path="/details/:id" element={<Product />}></Route>
+          <Route path="*" element={<NotFound />}></Route>
+        </Routes>
+      </AppWrapper>
+      <Footer />
+    </ThemeProvider>
   );
 };
 

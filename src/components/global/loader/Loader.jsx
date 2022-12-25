@@ -19,6 +19,10 @@ const Loading = styled(Box)(
     };
   };
 
+  .MuiSkeleton-root::after {
+    background: linear-gradient(90deg, transparent, transparent, ${theme.palette.colors.textColor})
+  }
+
 `
 );
 

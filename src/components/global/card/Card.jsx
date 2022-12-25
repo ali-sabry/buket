@@ -56,16 +56,14 @@ const CustomCard = ({ product, cart }) => {
           ) : (
             <>
               <Tooltip
-                title={`${
-                  ProductCtx.ItemIsFavorite(product.id) ? "Remove" : "Add"
-                }`}
+                title={`${ProductCtx.ItemIsFavorite(product.id) ? "UnFavor" : "Favor"
+                  }`}
                 placement="top-start"
               >
                 <FavoriteBtn
                   style={{
-                    opacity: `${
-                      ProductCtx.ItemIsFavorite(product.id) ? "1" : ".5"
-                    }`,
+                    opacity: `${ProductCtx.ItemIsFavorite(product.id) ? "1" : ".5"
+                      }`,
                   }}
                   onClick={FavoritesHandler}
                 />
@@ -82,7 +80,7 @@ const CustomCard = ({ product, cart }) => {
               <ProductName>
                 <More to={`/details/${product.id}`}>
                   {product.name.slice(0, 20)}
-                  <Tooltip title="More" placement="top-start">
+                  <Tooltip title="Read More" placement="top-start">
                     <span>
                       <ReadMoreIcon />
                     </span>
@@ -93,67 +91,67 @@ const CustomCard = ({ product, cart }) => {
           )}
         </ImageWrapper>
         <div>
-          {!ProductCtx.IsProductsLoading && 
-             <CardFooter>
-                <div>
-                  {location.pathname === "/cart" ? (
-                    <CardActions>
-                      <Tooltip title="Decrease" placement="top-start">
-                        <IconButton
-                          type="button"
-                          size="large"
-                          onClick={() =>
-                            ProductCtx.Quantity(
-                              product.id,
-                              product.quantity - 1
-                            )
-                          }
-                        >
-                          -
-                        </IconButton>
-                      </Tooltip>
-                      <Typography variant="h5">{product.quantity}</Typography>
-                      <Tooltip title="Increase" placement="top-start">
-                        <IconButton
-                          type="button"
-                          size="large"
-                          onClick={() =>
-                            ProductCtx.Quantity(
-                              product.id,
-                              product.quantity + 1
-                            )
-                          }
-                        >
-                          +
-                        </IconButton>
-                      </Tooltip>
-                    </CardActions>
-                  ) : location.pathname === "/wishlist" ? (
-                    <span>{product.price}</span>
-                  ) : (
-                    <span>{product.price.formatted_with_symbol}</span>
-                  )}
-                </div>
-                <CardActions sx={{ justifyContent: "flex-end" }}>
-                  {location.pathname === "/cart" ? (
-                    <Tooltip title="Remove Product" placement="top-start">
+          {!ProductCtx.IsProductsLoading &&
+            <CardFooter>
+              <div>
+                {location.pathname === "/cart" ? (
+                  <CardActions>
+                    <Tooltip title="Decrease" placement="top-start">
                       <IconButton
-                        onClick={() => ProductCtx.RemoveProduct(product.id)}
+                        type="button"
+                        size="large"
+                        onClick={() =>
+                          ProductCtx.Quantity(
+                            product.id,
+                            product.quantity - 1
+                          )
+                        }
                       >
-                        <DeleteIcon />
+                        -
                       </IconButton>
                     </Tooltip>
-                  ) : (
-                    <Tooltip title="Add" placement="top-start">
+                    <Typography variant="h5">{product.quantity}</Typography>
+                    <Tooltip title="Increase" placement="top-start">
                       <IconButton
-                        onClick={() => ProductCtx.AddToCart(product.id, 1)}
+                        type="button"
+                        size="large"
+                        onClick={() =>
+                          ProductCtx.Quantity(
+                            product.id,
+                            product.quantity + 1
+                          )
+                        }
                       >
-                        <AddIcon />
+                        +
                       </IconButton>
                     </Tooltip>
-                  )}
-                </CardActions>
-             </CardFooter>
+                  </CardActions>
+                ) : location.pathname === "/wishlist" ? (
+                  <span>{product.price}</span>
+                ) : (
+                  <span>{product.price.formatted_with_symbol}</span>
+                )}
+              </div>
+              <CardActions sx={{ justifyContent: "flex-end" }}>
+                {location.pathname === "/cart" ? (
+                  <Tooltip title="Remove Product" placement="top-start">
+                    <IconButton
+                      onClick={() => ProductCtx.RemoveProduct(product.id)}
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  </Tooltip>
+                ) : (
+                  <Tooltip title="Add To Cart" placement="top-start">
+                    <IconButton
+                      onClick={() => ProductCtx.AddToCart(product.id, 1)}
+                    >
+                      <AddIcon />
+                    </IconButton>
+                  </Tooltip>
+                )}
+              </CardActions>
+            </CardFooter>
           }
         </div>
       </ProductCard>

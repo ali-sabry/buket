@@ -35,28 +35,26 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import HomeIcon from "@mui/icons-material/Home";
 
 import Context from "store/Context";
+import Loader from "components/global/loader/Loader";
 
 const Header = () => {
   const location = useLocation();
   const ProductsCtx = useContext(Context);
+
   const [total, setTotal] = useState();
+  const [slug, setSlug] = useState("all");
+  const [value, setValue] = useState(0);
 
-  const [PaddingVal, setPaddingVal] = useState();
-  const [Slug, setSlug] = useState("all");
-  const [Value, setValue] = useState(0);
-
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
+  const handleChange = (event, newValue) => setValue(newValue);
 
   useEffect(() => {
     ProductsCtx.GetAllCategoryNames();
-    ProductsCtx.GetProductsByCategory(Slug);
+    // ProductsCtx.GetProductsByCategory(slug);
   }, []);
 
   useEffect(() => {
-    ProductsCtx.GetProductsByCategory(Slug);
-  }, [Slug]);
+    ProductsCtx.GetProductsByCategory(slug);
+  }, [slug]);
 
   useEffect(() => {
     setTotal(ProductsCtx.TotalFavorites);
@@ -86,11 +84,14 @@ const Header = () => {
                 <HomeIcon />
               </LogoBrand>
               <NavbarActions sx={{ width: { xs: "87%", sm: "50%" } }}>
-                <IconButton onClick={() => ProductsCtx.SetModeStatus()}>
+                <IconButton onClick={() => {
+                  ProductsCtx.SetModeStatus()
+                  localStorage.setItem('DarkModeStatus', JSON.stringify(!ProductsCtx.DarkModeStatus));
+                }}>
                   {ProductsCtx.DarkModeStatus === true ? (
-                    <DarkModeOutlinedIcon />
-                  ) : (
                     <LightModeOutlinedIcon />
+                  ) : (
+                    <DarkModeOutlinedIcon />
                   )}
                 </IconButton>
                 <IconButton component={NavLink} to="/wishlist">
@@ -127,39 +128,60 @@ const Header = () => {
                 <Typography variant="body2">
                   high quality products with custom offers and fixed price.
                 </Typography>
-                <Search>
-                  <SearchIconWrapper>
-                    <SearchIcon />
-                  </SearchIconWrapper>
-                  <StyledInputBase
-                    placeholder="Search…"
-                    inputProps={{ "aria-label": "search" }}
-                    onChange={(e) => ProductsCtx.SetSearchValue(e.target.value)}
-                  />
-                </Search>
+                {
+                  ProductsCtx.AllCategoryNames.length == 0 ?
+                    <div style={{ width: '100%', marginBottom: '30px' }}>
+                      <Loader
+                        card
+                        type="rectiangle"
+                        width="100%"
+                        height="40px"
+                        position="relative"
+                      />
+                    </div> :
+                    <Search>
+                      <SearchIconWrapper>
+                        <SearchIcon />
+                      </SearchIconWrapper>
+                      <StyledInputBase
+                        placeholder="Search…"
+                        inputProps={{ "aria-label": "search" }}
+                        onChange={(e) => ProductsCtx.SetSearchValue(e.target.value)}
+                      />
+                    </Search>
+                }
               </HeaderContent>
-              <CtegoryList>
-                <Grid container spacing={2}>
-                  <Grid item xs={12}>
-                    <Tabs
-                      value={Value}
-                      onChange={handleChange}
-                      scrollButtons
-                      variant="scrollable"
-                      scrollButtons={true}
-                      aria-label="scrollable force tabs example"
-                    >
-                      {ProductsCtx.AllCategoryNames.map((category, index) => (
-                        <Tab
-                          label={category.name}
-                          key={index}
-                          onClick={() => setSlug(category.slug)}
-                        />
-                      ))}
-                    </Tabs>
-                  </Grid>
-                </Grid>
-              </CtegoryList>
+              {
+                ProductsCtx.AllCategoryNames.length == 0 ?
+                  <Loader
+                    card
+                    type="rectiangle"
+                    width="100%"
+                    height="40px"
+                    position="relative"
+                  /> :
+                  <CtegoryList>
+                    <Grid container spacing={2}>
+                      <Grid item xs={12}>
+                        <Tabs
+                          value={value}
+                          onChange={handleChange}
+                          variant="scrollable"
+                          scrollButtons={true}
+                          aria-label="scrollable force tabs example"
+                        >
+                          {ProductsCtx.AllCategoryNames.map((category, index) => (
+                            <Tab
+                              label={category.name}
+                              key={index}
+                              onClick={() => setSlug(category.slug)}
+                            />
+                          ))}
+                        </Tabs>
+                      </Grid>
+                    </Grid>
+                  </CtegoryList>
+              }
             </HeaderDetails>
           )}
         </Box>

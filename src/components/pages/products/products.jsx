@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { useEffect, useContext, useState } from "react";
-import { Grid, Container, Select, MenuItem } from "@mui/material";
+import { Grid, Container } from "@mui/material";
 
 import Loader from "components/global/loader/Loader";
 
@@ -21,13 +21,38 @@ const Products = () => {
 
   return (
     <Container sx={{ marginTop: "35px" }}>
-      <Grid container spacing={2}>
-        {ProductsCtx.AllProducts.filter((product) =>
-          product.name.toLowerCase().includes(SearchValue)
-        ).map((product, index) => {
-          return <CustomCard key={index} product={product} />;
-        })}
-      </Grid>
+      {
+        ProductsCtx.IsProductsLoading ? <>
+          <Loader
+            card
+            type="rectiangle"
+            width="100%"
+            height="240px"
+            position="relative"
+          />
+          <Loader
+            card
+            type="rectiangle"
+            width="100%"
+            height="240px"
+            position="relative"
+          />
+          <Loader
+            card
+            type="rectiangle"
+            width="100%"
+            height="240px"
+            position="relative"
+          />
+        </> :
+          <Grid container spacing={2}>
+            {ProductsCtx.AllProducts.filter((product) =>
+              product.name.toLowerCase().includes(SearchValue)
+            ).map((product, index) => {
+              return <CustomCard key={index} product={product} />;
+            })}
+          </Grid>
+      }
     </Container>
   );
 };

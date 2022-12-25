@@ -1,7 +1,7 @@
 import { styled, alpha } from '@mui/material/styles';
 import { InputBase, Box } from '@mui/material';
 
-export const Navbar = styled('nav')( ({ theme })=> `
+export const Navbar = styled('nav')(({ theme }) => `
   background-color: ${theme.palette.colors.secondBg};
   position: fixed;
   top: 0;
@@ -17,7 +17,7 @@ export const Navbar = styled('nav')( ({ theme })=> `
   }
 `);
 
-export const LogoBrand = styled(Box)(({ theme })=>`
+export const LogoBrand = styled(Box)(({ theme }) => `
   color: ${theme.palette.colors.primary};
   display: flex;
   align-items: center;
@@ -38,7 +38,7 @@ export const LogoBrand = styled(Box)(({ theme })=>`
   };
 `);
 
-export const NavbarActions = styled(Box)(({ theme })=>`
+export const NavbarActions = styled(Box)(({ theme }) => `
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -84,7 +84,7 @@ export const NavbarActions = styled(Box)(({ theme })=>`
   };
 `);
 
-export const HeaderDetails = styled('div')(({ theme })=>`
+export const HeaderDetails = styled('div')(({ theme }) => `
   width: 80%;
   margin: 0 auto;
   @media screen and (max-width: 600px) {
@@ -92,7 +92,8 @@ export const HeaderDetails = styled('div')(({ theme })=>`
   }
 `);
 
-export const HeaderContent = styled('div')(({ theme })=> `
+export const HeaderContent = styled('div')(({ theme }) => `
+  width: 100%;
   color: ${theme.palette.colors.textColor};
   display: flex;
   flex-wrap: wrap;
@@ -117,6 +118,7 @@ export const HeaderContent = styled('div')(({ theme })=> `
   }
 
   @media screen and (max-width: 600px) {
+    padding: 0;
     h4 {
       font-weight: bold;
       font-size: 25px;
@@ -124,7 +126,7 @@ export const HeaderContent = styled('div')(({ theme })=> `
   }
 `);
 
-export const CtegoryList = styled('div')(({ theme })=>`
+export const CtegoryList = styled('div')(({ theme }) => `
   background-color: transparent;
   margin: 15px 0 50px;
   button { 
@@ -143,6 +145,7 @@ export const Search = styled('section')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
+  boxShadow: '0 0 15px 0 rgb(0 0 0 / 10%)',
   '&:hover': {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
@@ -150,7 +153,7 @@ export const Search = styled('section')(({ theme }) => ({
   margin: 'auto',
 }));
 
-export const SearchIconWrapper = styled('span')(({ theme })=> `
+export const SearchIconWrapper = styled('span')(({ theme }) => `
   padding: theme.spacing(0, 2);
   height: 100%;
   position: absolute;
@@ -159,7 +162,7 @@ export const SearchIconWrapper = styled('span')(({ theme })=> `
   display: flex;
   align-items: center;
   justify-content: center;
-`); 
+`);
 
 export const StyledInputBase = styled(InputBase)(({ theme }) => ({
   width: '100%',
