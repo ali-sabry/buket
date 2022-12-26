@@ -1,11 +1,9 @@
-/* eslint-disable */
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import {
   Select,
   MenuItem,
   InputLabel,
   Grid,
-  Typography,
   Container,
   Button,
 } from "@mui/material";
@@ -15,6 +13,7 @@ import { AddressStyled } from "./Styles";
 import Context from "store/Context";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import ArrowBtn from "./ArrowBtn";
 
 const ShippingAddress = () => {
   const CheckoutCtx = useContext(Context);
@@ -42,7 +41,7 @@ const ShippingAddress = () => {
     <AddressStyled>
       <Container>
         <form>
-          <Grid container spacing={{xs: '2', sm: '4'}}>
+          <Grid container spacing={{ xs: '2', sm: '4' }}>
             <>
               <Grid item xs={12} md={6}>
                 <InputLabel> Country </InputLabel>
@@ -100,20 +99,9 @@ const ShippingAddress = () => {
             </>
             <Grid container spacing={2}>
               <Grid item xs={6} md={6}>
-                <Button
-                  sx={{
-                    display: { md: "block" },
-                    width: { md: "50%" },
-                    padding: { md: "13px 0" },
-                    textAlign: { md: "center" },
-                  }}
-                  style={{ color: !CheckoutCtx.DarkModeStatus && "#000" }}
-                  type="button"
-                  variant="contained"
-                  onClick={(e) => CheckoutCtx.SetActiveStep("prev")}
-                >
+                <ArrowBtn onClick={() => CheckoutCtx.SetActiveStep("prev")} type="left" color={CheckoutCtx.DarkModeStatus && "#000"}>
                   <KeyboardBackspaceIcon /> Back
-                </Button>
+                </ArrowBtn>
               </Grid>
               <Grid item xs={6} md={6} sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                 <Button
@@ -123,7 +111,7 @@ const ShippingAddress = () => {
                     padding: { md: "13px 0" },
                     textAlign: { md: "center" },
                   }}
-                  style={{ color: !CheckoutCtx.DarkModeStatus && "#000" }}
+                  style={{ color: CheckoutCtx.DarkModeStatus && "#000" }}
                   type="submit"
                   variant="contained"
                   onClick={() =>

@@ -108,9 +108,7 @@ const Header = () => {
                 >
                   <Badge
                     badgeContent={
-                      ProductsCtx.IsCartLoading
-                        ? 0
-                        : ProductsCtx.Cart.total_items
+                      ProductsCtx.IsCartLoading ? ('...') : ProductsCtx.Cart.total_items
                     }
                     color="secondary"
                   >

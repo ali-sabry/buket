@@ -7,13 +7,16 @@ import {
   AppWrapper,
   Header,
   Footer,
+} from "components";
+
+import {
   Products,
   Cart,
   Checkout,
   Product,
   Wishlist,
   NotFound,
-} from "components";
+} from "pages";
 
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";

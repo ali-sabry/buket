@@ -41,7 +41,7 @@ const Footer = () => {
         <Grid container>
           <Grid item xs={12} textAlign="center">
             <Typography variant="body2">
-              all copyright resarved &copy; 2022 made by
+              all copyright resarved &copy; {new Date().getUTCFullYear()} made by
               <a
                 href="https://www.linkedin.com/in/ali-sabry"
                 target="_blank"

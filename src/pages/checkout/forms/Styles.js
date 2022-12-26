@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
 
-export const PersonalStyled = styled(Box)(({ theme })=>`
+export const PersonalStyled = styled(Box)(({ theme }) => `
 	form {
 		margin-top: 45px;
 
@@ -54,7 +54,7 @@ export const PersonalStyled = styled(Box)(({ theme })=>`
 `);
 
 
-export const AddressStyled = styled(Box)(({ theme })=>`
+export const AddressStyled = styled(Box)(({ theme }) => `
 	form {
 		margin-top: 45px;
 
@@ -106,7 +106,7 @@ export const AddressStyled = styled(Box)(({ theme })=>`
 	};
 `);
 
-export const PaymentStyled = styled(Box)(({ theme })=>`
+export const PaymentStyled = styled(Box)(({ theme }) => `
 	
 	.StripeElement {
 			input, .InputElement {
@@ -136,7 +136,7 @@ export const PaymentStyled = styled(Box)(({ theme })=>`
 	};
 `);
 
-export const CardElementStyled = styled(Box)(({ theme })=>`
+export const CardElementStyled = styled(Box)(({ theme }) => `
 	border: 2px solid ${theme.palette.colors.primary};
 	border-radius: 7px;
 	padding: 20px 8px;

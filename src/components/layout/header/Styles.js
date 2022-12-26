@@ -100,18 +100,20 @@ export const HeaderContent = styled('div')(({ theme }) => `
   align-items: center;
   padding: 40px 0px;
   text-transform: capitalize;
+
   h4 {
     text-align: center;
     font-size: 34px;
     width: 90%;
     margin: auto;
   };
+
   p {
     line-height: 2;
     width: 80%;
     margin: 25px auto;
     text-align: center;
-  }
+  };
 
   .MuiInputBase-input {
     padding: 15px 47px !important;
@@ -154,7 +156,7 @@ export const Search = styled('section')(({ theme }) => ({
 }));
 
 export const SearchIconWrapper = styled('span')(({ theme }) => `
-  padding: theme.spacing(0, 2);
+  padding: ${theme.spacing(0, 1)};
   height: 100%;
   position: absolute;
   left: 15px;
@@ -173,6 +175,10 @@ export const StyledInputBase = styled(InputBase)(({ theme }) => ({
       backgroundColor: 'rgba(255, 255, 255, 0.25)',
     },
     padding: theme.spacing(1, 1, 1, 0),
+    paddingTop: '10px !important',
+    paddingBottom: '10px !important',
+    textIndent: '10px',
+
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),

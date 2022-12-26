@@ -21,7 +21,7 @@ const Confirmation = () => {
             your purshes is sucsses.
           </Typography>
           <Button
-            style={{ color: !CheckoutCtx.DarkModeStatus && "#000" }}
+            style={{ color: CheckoutCtx.DarkModeStatus && "#000" }}
             variant="contained"
             component={NavLink}
             to="/"

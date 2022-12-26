@@ -1,8 +1,9 @@
 import { styled } from '@mui/material/styles';
 
 
-export const CheckoutPage = styled('section')(({ theme })=>`
-	
+export const CheckoutPage = styled('section')(({ theme }) => `
+	padding-bottom: 30px;
+
 	h4 {
 		color: ${theme.palette.colors.textColor};
 		padding: 15px 0;

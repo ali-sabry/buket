@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import { createTheme } from '@mui/material';
 
 export default createTheme({
@@ -34,3 +35,9 @@ export default createTheme({
     color: 'red',
   },
 });
+
+export const EmptySearchMsg = styled('h4')(({ theme }) => `
+  color: red;
+  margin-left: 15px;
+  margin-top: 15px;
+`);

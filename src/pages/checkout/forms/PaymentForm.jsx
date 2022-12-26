@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { useContext } from "react";
-import { Container, Grid, Typography, Button } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import {
   Elements,
   CardElement,
@@ -14,6 +14,7 @@ import Context from "store/Context";
 import Summry from "../messages/Summry";
 import Stripe from "lib/stripe/Stripe";
 import { PaymentStyled, CardElementStyled } from "./Styles";
+import ArrowBtn from "./ArrowBtn";
 
 const PaymentForm = () => {
   const CheckoutCtx = useContext(Context);
@@ -35,8 +36,8 @@ const PaymentForm = () => {
   };
 
   const inputStyle = {
-    iconColor: CheckoutCtx.DarkModeStatus ? "#000" : "#fff",
-    color: CheckoutCtx.DarkModeStatus ? "#000" : "#fff",
+    iconColor: CheckoutCtx.DarkModeStatus ? "#fff" : "#000",
+    color: CheckoutCtx.DarkModeStatus ? "#fff" : "#000",
     accentColor: CheckoutCtx.DarkModeStatus ? "#cfd0d4" : "#262626",
     fontSize: "17px",
     fontSmoothing: "antialiased",
@@ -44,7 +45,7 @@ const PaymentForm = () => {
       color: "transparent",
     },
     "::placeholder": {
-      color: CheckoutCtx.DarkModeStatus ? "#000" : "#fff",
+      color: CheckoutCtx.DarkModeStatus ? "#fff" : "#000",
     },
   };
 
@@ -66,18 +67,7 @@ const PaymentForm = () => {
                 <br /> <br />
                 <Grid container spacing={2}>
                   <Grid item xs={6} md={6}>
-                    <Button
-                      style={{ color: !CheckoutCtx.DarkModeStatus && "#000" }}
-                      sx={{
-                        display: { md: "block" },
-                        width: { md: "50%" },
-                        padding: { md: "13px 0" },
-                        textAlign: { md: "center" },
-                      }}
-                      type="button"
-                      variant="contained"
-                      onClick={() => CheckoutCtx.SetActiveStep("prev")}
-                    >
+                    <ArrowBtn onClick={() => CheckoutCtx.SetActiveStep("prev")} type="left" color={CheckoutCtx.DarkModeStatus && "#000"}>
                       <span
                         style={{
                           display: "flex",
@@ -87,7 +77,7 @@ const PaymentForm = () => {
                       >
                         <KeyboardBackspaceIcon /> Prev
                       </span>
-                    </Button>
+                    </ArrowBtn>
                   </Grid>
                   <Grid
                     item
@@ -95,18 +85,7 @@ const PaymentForm = () => {
                     md={6}
                     sx={{ display: "flex", justifyContent: "flex-end" }}
                   >
-                    <Button
-                      sx={{ fontSize: { xs: "13px", sm: "18px" } }}
-                      style={{ color: !CheckoutCtx.DarkModeStatus && "#000" }}
-                      sx={{
-                        display: { md: "block" },
-                        width: { md: "50%" },
-                        padding: { md: "13px 0" },
-                        textAlign: { md: "center" },
-                      }}
-                      type="submit"
-                      variant="contained"
-                    >
+                    <ArrowBtn type="right" color={CheckoutCtx.DarkModeStatus && "#000"}>
                       <span
                         style={{
                           display: "flex",
@@ -116,7 +95,7 @@ const PaymentForm = () => {
                       >
                         pay <MoneyIcon />
                       </span>
-                    </Button>
+                    </ArrowBtn>
                   </Grid>
                 </Grid>
               </form>

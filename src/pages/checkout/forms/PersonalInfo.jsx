@@ -1,13 +1,14 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
 
-import { TextField, Container, Grid, Button } from "@mui/material";
+import { TextField, Container, Grid } from "@mui/material";
 import { useForm, FormProvider } from "react-hook-form";
 import { PersonalStyled } from "./Styles";
-import Context from "store/Context";
 
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+
+import Context from "store/Context";
+import ArrowBtn from "./ArrowBtn";
 
 const PersonalInfo = () => {
   const CheckoutCtx = useContext(Context);
@@ -77,39 +78,19 @@ const PersonalInfo = () => {
                   required
                 />
               </Grid>
-              <Grid item xs={6} md={6} textAlign="left">
-                <Button
-                  sx={{
-                    display: { md: "block" },
-                    width: { md: "50%" },
-                    padding: { md: "13px 0" },
-                    textAlign: { md: "center" },
-                  }}
-                  style={{ color: !CheckoutCtx.DarkModeStatus && "#000" }}
-                  type="button"
-                  component={NavLink}
-                  to="/cart"
-                  variant="contained"
-                >
+              <Grid item xs={6} textAlign="left">
+                <ArrowBtn type="left" color={CheckoutCtx.DarkModeStatus && "#000"}>
                   <span>
                     <KeyboardBackspaceIcon /> Back
                   </span>
-                </Button>
+                </ArrowBtn>
               </Grid>
-              <Grid item xs={6} md={6} textAlign="right">
-                <Button
-                  sx={{
-                    display: { md: "block" },
-                    width: { md: "50%" },
-                    padding: { md: "13px 0" },
-                    textAlign: { md: "center" },
-                  }}
-                  style={{ color: !CheckoutCtx.DarkModeStatus && "#000" }}
-                  type="submit"
-                  variant="contained"
-                >
-                  Next <ArrowRightAltIcon />
-                </Button>
+              <Grid item xs={6} textAlign="right">
+                <ArrowBtn type="right" color={CheckoutCtx.DarkModeStatus && "#000"}>
+                  <span>
+                    Next <ArrowRightAltIcon />
+                  </span>
+                </ArrowBtn>
               </Grid>
             </Grid>
           </form>

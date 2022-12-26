@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import { useContext, useEffect, useState } from "react";
 
 import {
@@ -33,17 +31,18 @@ const Checkout = () => {
       return <ShippingAddress />;
     } else {
       return <PaymentForm />;
-      return;
     }
   };
 
   useEffect(() => {
     if (!CheckoutCtx.IsCartLoading)
       CheckoutCtx.GenerateToken(CheckoutCtx.Cart.id, "cart");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [CheckoutCtx.IsCartLoading]);
 
   useEffect(() => {
     if (CheckoutCtx.TokenId) CheckoutCtx.AllCountries(CheckoutCtx.TokenId.id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [CheckoutCtx.TokenId]);
 
   useEffect(() => {
