@@ -1,9 +1,7 @@
 import { createTheme } from '@mui/material';
 
-// import { createStyles } from '@mui/material';
-
 export default createTheme({
-  container: { 
+  container: {
     paddingTop: '25px',
     paddingBottom: '25px',
   },

@@ -36,6 +36,8 @@ const App = () => {
     }
   }, []);
 
+
+
   useEffect(() => {
     localStorage.setItem(
       "Ecomerce_Shop",

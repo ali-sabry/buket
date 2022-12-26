@@ -23,11 +23,7 @@ const FooterBar = styled("footer")(
 	};
 
    @media screen and (max-width: 576px) {
-  	 margin-bottom: ${margin - 15}px;
-     padding-bottom: 30px;
-     p {
-      font-size: 16px;
-     }
+  	 display: none;
    };
 `
 );

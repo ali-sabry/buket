@@ -4,9 +4,9 @@ import { styled } from "@mui/material/styles";
 
 const Loading = styled(Box)(
   ({ theme }) => `
-
   .MuiSkeleton-root {
     background-color: ${theme.palette.colors.primary};
+    margin-bottom: 15px;
     top: 0;
     left: 0;
     display: flex;

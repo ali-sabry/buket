@@ -49,7 +49,6 @@ const Header = () => {
 
   useEffect(() => {
     ProductsCtx.GetAllCategoryNames();
-    // ProductsCtx.GetProductsByCategory(slug);
   }, []);
 
   useEffect(() => {
