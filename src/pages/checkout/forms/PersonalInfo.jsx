@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import { TextField, Container, Grid } from "@mui/material";
 import { useForm, FormProvider } from "react-hook-form";
@@ -10,9 +10,22 @@ import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import Context from "store/Context";
 import ArrowBtn from "./ArrowBtn";
 
+
 const PersonalInfo = () => {
   const CheckoutCtx = useContext(Context);
   const { register, handleSubmit } = useForm();
+
+  //=== UserName Regx Status & Pattern
+  const [userNameRegxError, setuserNameRegxError] = useState(false);
+  const userNameRegx = /^[a-z]+$/i;
+
+  //=== Email Regx Status & Pattern
+  const [emailRegxError, setEmailRegxError] = useState(false);
+  const emailRegx = /[^\s@]+@[^\s@]+\.[^\s@]+/;
+
+  //=== Zip Code Regx
+  const [zipRegxError, setzipRegxError] = useState(false);
+  const zipRegx = /[0-9]/i;
 
   return (
     <PersonalStyled>
@@ -31,6 +44,10 @@ const PersonalInfo = () => {
                   {...register("firstname")}
                   label="FirstName"
                   required
+                  error={userNameRegxError ? true : false}
+                  helperText={`${userNameRegxError ? "Invalid name special character and numbers not allowed" : ""}`}
+                  onInput={(e) => userNameRegx.test(e.target.value) ? setuserNameRegxError(false) : setuserNameRegxError(true)}
+                  onBlur={(e) => userNameRegx.test(e.target.value) ? setuserNameRegxError(false) : setuserNameRegxError(true)}
                 />
               </Grid>
               <Grid item xs={12} md={6}>
@@ -40,6 +57,10 @@ const PersonalInfo = () => {
                   {...register("lastname")}
                   label="LastName"
                   required
+                  error={userNameRegxError ? true : false}
+                  helperText={`${userNameRegxError ? "Invalid name special character and numbers not allowed" : ""}`}
+                  onInput={(e) => userNameRegx.test(e.target.value) ? setuserNameRegxError(false) : setuserNameRegxError(true)}
+                  onBlur={(e) => userNameRegx.test(e.target.value) ? setuserNameRegxError(false) : setuserNameRegxError(true)}
                 />
               </Grid>
               <Grid item xs={12} md={6}>
@@ -48,7 +69,12 @@ const PersonalInfo = () => {
                   fullWidth
                   {...register("email")}
                   label="Email"
+                  type="email"
                   required
+                  error={emailRegxError ? true : false}
+                  helperText={`${emailRegxError ? "Invalid Email" : ""}`}
+                  onInput={(e) => emailRegx.test(e.target.value) ? setEmailRegxError(false) : setEmailRegxError(true)}
+                  onBlur={(e) => emailRegx.test(e.target.value) ? setEmailRegxError(false) : setEmailRegxError(true)}
                 />
               </Grid>
               <Grid item xs={12} md={6}>
@@ -76,6 +102,10 @@ const PersonalInfo = () => {
                   {...register("zip")}
                   label="Zip / Postal Code"
                   required
+                  error={zipRegxError ? true : false}
+                  helperText={`${zipRegxError ? "Invalid Zip Code accept only numbers" : ""}`}
+                  onInput={(e) => zipRegx.test(e.target.value) ? setzipRegxError(false) : setzipRegxError(true)}
+                  onBlur={(e) => zipRegx.test(e.target.value) ? setzipRegxError(false) : setzipRegxError(true)}
                 />
               </Grid>
               <Grid item xs={6} textAlign="left">

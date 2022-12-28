@@ -47,6 +47,10 @@ export const PersonalStyled = styled(Box)(({ theme }) => `
 			};
 		};
 
+		p {
+			color: ${theme.palette.colors.textColor}
+		}
+
 		button {
 			margin-left: auto;
 		}

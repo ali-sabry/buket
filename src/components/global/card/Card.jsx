@@ -19,7 +19,6 @@ import {
   DeleteIcon,
 } from "./Styles";
 
-import Loader from "../loader/Loader";
 import CartContext from "store/Context";
 import ReadMoreIcon from "@mui/icons-material/ReadMore";
 
@@ -45,50 +44,41 @@ const CustomCard = ({ product, cart }) => {
     <Grid item xs={12} sm={6} md={4} lg={3}>
       <ProductCard>
         <ImageWrapper>
-          {ProductCtx.IsProductsLoading ? (
-            <Loader
-              card
-              type="rectiangle"
-              width="100%"
-              height="240px"
-              position="static"
-            />
-          ) : (
-            <>
-              <Tooltip
-                title={`${ProductCtx.ItemIsFavorite(product.id) ? "UnFavor" : "Favor"
-                  }`}
-                placement="top-start"
-              >
-                <FavoriteBtn
-                  style={{
-                    opacity: `${ProductCtx.ItemIsFavorite(product.id) ? "1" : ".5"
-                      }`,
-                  }}
-                  onClick={FavoritesHandler}
-                />
-              </Tooltip>
-              <CardMedia
-                component="img"
-                image={
-                  location.pathname === "/wishlist"
-                    ? product.image
-                    : product.image.url
-                }
-                alt="product image"
+          <>
+            <Tooltip
+              title={`${ProductCtx.ItemIsFavorite(product.id) ? "UnFavor" : "Favor"
+                }`}
+              placement="top-start"
+            >
+              <FavoriteBtn
+                style={{
+                  opacity: `${ProductCtx.ItemIsFavorite(product.id) ? "1" : ".5"
+                    }`,
+                }}
+                onClick={FavoritesHandler}
               />
-              <ProductName>
-                <More to={`/details/${product.id}`}>
-                  {product.name.slice(0, 20)}
-                  <Tooltip title="Read More" placement="top-start">
-                    <span>
-                      <ReadMoreIcon />
-                    </span>
-                  </Tooltip>
-                </More>
-              </ProductName>
-            </>
-          )}
+            </Tooltip>
+            <CardMedia
+              component="img"
+              image={
+                location.pathname === "/wishlist"
+                  ? product.image
+                  : product.image.url
+              }
+              alt="product image"
+              loading="lazy"
+            />
+            <ProductName>
+              <More to={`/details/${product.id}`}>
+                {product.name.slice(0, 20)}
+                <Tooltip title="Read More" placement="top-start">
+                  <span>
+                    <ReadMoreIcon />
+                  </span>
+                </Tooltip>
+              </More>
+            </ProductName>
+          </>
         </ImageWrapper>
         <div>
           {!ProductCtx.IsProductsLoading &&

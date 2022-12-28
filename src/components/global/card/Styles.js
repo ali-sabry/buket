@@ -8,7 +8,7 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 
 
-export const ProductCard = styled(Card)(({ theme })=> `
+export const ProductCard = styled(Card)(({ theme }) => `
   background-color: ${theme.palette.colors.secondBg};
  	width: 100%;
   text-transform: capitalize;
@@ -16,7 +16,7 @@ export const ProductCard = styled(Card)(({ theme })=> `
   padding: 15px;
 `);
 
-export const FavoriteBtn = styled(FavoriteIcon)(({ theme })=>`
+export const FavoriteBtn = styled(FavoriteIcon)(({ theme }) => `
   position: absolute;
   top: 5px;
   right: 5px;
@@ -24,12 +24,13 @@ export const FavoriteBtn = styled(FavoriteIcon)(({ theme })=>`
   color: ${theme.palette.colors.primary};
 `);
 
-export const ImageWrapper = styled(Box)(({ theme })=>`
+export const ImageWrapper = styled(Box)(({ theme }) => `
   position: relative;
   border-radius: 7px;
   overflow: hidden;
   padding: 15px;
   height: 300px;
+
   img {
     max-width: 70%;
     max-height: 80%;
@@ -38,7 +39,7 @@ export const ImageWrapper = styled(Box)(({ theme })=>`
 `);
 
 
-export const ProductName = styled('h4')(({ theme })=> `
+export const ProductName = styled('h4')(({ theme }) => `
   text-align: center;
   display: flex !important;
   align-items: center;
@@ -48,7 +49,7 @@ export const ProductName = styled('h4')(({ theme })=> `
   }
 `);
 
-export const More = styled(NavLink)(({ theme })=> `
+export const More = styled(NavLink)(({ theme }) => `
   color: ${theme.palette.colors.textColor};
   display: flex;
   align-items: center;
@@ -76,7 +77,7 @@ export const More = styled(NavLink)(({ theme })=> `
 `);
 
 
-export const CardFooter = styled(Box)(({ theme })=> `
+export const CardFooter = styled(Box)(({ theme }) => `
   display: flex;
   flex-wrap: no-wrap;
   align-items: center;
@@ -102,12 +103,12 @@ export const CardFooter = styled(Box)(({ theme })=> `
 `);
 
 
-export const AddIcon = styled(AddShoppingCartIcon)(({ theme })=>`
+export const AddIcon = styled(AddShoppingCartIcon)(({ theme }) => `
   color: ${theme.palette.colors.primary};
 `);
 
 
-export const DeleteIcon = styled(HighlightOffIcon)(({ theme })=>`
+export const DeleteIcon = styled(HighlightOffIcon)(({ theme }) => `
   color: ${theme.palette.colors.primary};
 `);
 
