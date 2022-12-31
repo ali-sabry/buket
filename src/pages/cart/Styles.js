@@ -6,7 +6,7 @@ export const CartSection = styled('section')(({ theme }) => `
 	overflow: hidden;
 	display: flex;
 	align-items: center;
-	padding-bottom: 25px;
+	padding: 25px 0;
 	
 	h4.heading {
 		width: 80%;
@@ -85,7 +85,7 @@ export const CartActions = styled(Box)(({ theme }) => `
 	};
 `);
 
-export const EmptyCard = styled(Box)(({ theme }) => `
+export const EmptyCart = styled(Box)(({ theme }) => `
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -108,21 +108,18 @@ export const EmptyCard = styled(Box)(({ theme }) => `
 
 	button {
 		background-color: ${theme.palette.colors.primary};
-		color: ${theme.palette.colors.textColor};
 		text-transform: capitalize;
-		opacity: .9;
 		width: 250px;
 		padding: 15px 0;
 		font-size: 20px;
+		&:hover {
+			background-color: ${theme.palette.colors.primary};
+		};
 
 		a {
+			color: ${theme.palette.colors.textColor === '#fff' ? '#000' : '#fff'};
 			text-decoration: none !important;
 		}
-
-		&:hover {
-		   opacity: 1;
-		   background-color: ${theme.palette.colors.primary};
-		};
 	};
 
 	@media screen and (max-width: 600px) {
@@ -143,7 +140,6 @@ export const EmptyCard = styled(Box)(({ theme }) => `
 	    		font-size: 18px;
 	    		width: fit-content;
 			};
-
 		};
 	};
 `);

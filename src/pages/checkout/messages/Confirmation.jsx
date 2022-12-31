@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 
 import { Typography, Button, Container } from "@mui/material";
-import { Payment } from "assets";
+import Payment from "assets/payment.gif";
 
 import Context from "store/Context";
 import { ConfirmationStyled } from "./Styles";
@@ -21,7 +21,6 @@ const Confirmation = () => {
             your purshes is sucsses.
           </Typography>
           <Button
-            style={{ color: CheckoutCtx.DarkModeStatus && "#000" }}
             variant="contained"
             component={NavLink}
             to="/"

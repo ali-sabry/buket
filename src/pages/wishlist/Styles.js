@@ -2,8 +2,9 @@ import { styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
 
 
-export const WishlistPage = styled(Box)(({ theme })=>`
+export const WishlistPage = styled(Box)(({ theme }) => `
 	min-height: 100vh;
+	padding: 25px 0;
 
 	h4.heading {
 		width: 80%;
@@ -24,7 +25,7 @@ export const WishlistPage = styled(Box)(({ theme })=>`
 	};
 `);
 
-export const EmptyWishList = styled(Box)(({ theme })=>`
+export const EmptyWishList = styled(Box)(({ theme }) => `
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -32,9 +33,11 @@ export const EmptyWishList = styled(Box)(({ theme })=>`
 	align-items: center;
 	justify-content: space-between;
 	gap: 20px;
+
 	img, div {
 	  width: calc(50% - 20px);
 	};
+
 	p {
 		line-height: 2;
 		width: 100%;
@@ -42,33 +45,39 @@ export const EmptyWishList = styled(Box)(({ theme })=>`
 		font-size: 25px;
 		color: ${theme.palette.colors.textColor};
 	};
+
 	button {
 		background-color: ${theme.palette.colors.primary};
-		color: ${theme.palette.colors.textColor};
 		text-transform: capitalize;
-		opacity: .9;
 		width: 250px;
-	  padding: 15px 0;
-	  font-size: 20px;
-	  a {
-	  	text-decoration: none !important;
-	  }
+		padding: 15px 0;
+		font-size: 20px;
 		&:hover {
-		   opacity: 1;
 		   background-color: ${theme.palette.colors.primary};
 		};
+
+	  a {
+	  	text-decoration: none !important;
+		color: ${theme.palette.colors.textColor === '#fff' ? '#000' : '#fff'};
+	  }
+	  
 	};
+
 	@media screen and (max-width: 600px) {
 		align-items: stretch;
+
 		img, div {
 	  		width: 100%;
 		};
+
 		div {
+
 			p {
 				font-size: 22px;
 			};
+
 			button {
-				padding: 9px 15px;
+				padding: 5px 15px;
 	    		font-size: 20px;
 	    		width: fit-content;
 			};

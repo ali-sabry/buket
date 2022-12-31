@@ -26,8 +26,10 @@ import Context from "./store/Context";
 const App = () => {
   const ProductsCtx = useContext(Context);
 
+
   useEffect(() => {
     ProductsCtx.RetriveProduct();
+    ProductsCtx.GetAllProductsCount();
 
     if (localStorage.getItem("Ecomerce_Shop") !== null) {
       const data = localStorage.getItem("Ecomerce_Shop");
@@ -39,8 +41,6 @@ const App = () => {
     }
   }, []);
 
-
-
   useEffect(() => {
     localStorage.setItem(
       "Ecomerce_Shop",
@@ -51,6 +51,10 @@ const App = () => {
   useEffect(() => {
     ProductsCtx.GetCartStatus(ProductsCtx.Cart);
   }, [ProductsCtx.Cart]);
+
+  // useEffect(() => {
+  //   ProductsCtx.GetProductsByCategory('all');
+  // }, [ProductsCtx.CurrentPage]);
 
   return (
     <ThemeProvider theme={ProductsCtx.customTheme}>

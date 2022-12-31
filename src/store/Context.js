@@ -5,9 +5,12 @@ import commerce from 'lib/commerce/commerce';
 
 const Context = createContext({
   AllProducts: [],
+  AllProductsCount: 0,
+  CurrentPage: 1,
   TargetPrduct: [],
   AllCategoryNames: [],
   FirstCategoryName: '',
+  CurrentSlug: 'all',
   Cart: {},
   CartIsEmpty: true,
   IsProductsLoading: true,
@@ -27,11 +30,15 @@ const Context = createContext({
   Favorites: [],
   TotalFavorites: 0,
   customTheme: {},
+  stripeInputStyle: {},
   SetCartEmptyStatus: (status) => { },
+  GetAllProductsCount: () => { },
+  SetTheCurrentPageNumber: () => { },
   GetProductById: (productId) => { },
   GetAllCategoryNames: () => { },
   GetProductsByCategory: (categorySlug) => { },
   SetFirstCategoryName: (value) => { },
+  SetCurrentSlug: (value) => { },
   RetriveProduct: () => { },
   GetCartStatus: () => { },
   AddToCart: (productId, quantity) => { },
@@ -62,9 +69,12 @@ export const ContextProvider = ({ children }) => {
   const [IsCartLoading, setIsCartLoading] = useState(true);
   const [IsCheckoutLoading, setIsCheckoutLoading] = useState(true);
   const [AllProducts, setAllProducts] = useState([]);
+  const [AllProductsCount, setAllProductsCount] = useState(0);
+  const [CurrentPage, setCurrentPage] = useState(1);
   const [TargetProduct, setTargetProduct] = useState([]);
   const [AllCategoryNames, setAllCategoryNames] = useState([]);
   const [FirstCategoryName, setFirstCategoryName] = useState('');
+  const [CurrentSlug, setCurrentSlug] = useState('all');
   const [Cart, setCart] = useState({});
   const [CartIsEmpty, setCartIsEmpty] = useState(true);
   const [TokenId, setTokenId] = useState(null);
@@ -94,11 +104,27 @@ export const ContextProvider = ({ children }) => {
   };
 
   const SetFirstCategoryNameHandler = (value) => FirstCategoryName(value);
+  const SetCurrentSlugHandler = (value) => setCurrentSlug(value);
 
+
+  //==== Get all products length to create pagination count
+  const GetAllProductsCountHandler = async () => {
+    const res = await commerce.products.list({
+      category_slug: CurrentSlug
+    }).then((response) => response.data);
+    setAllProductsCount(res.length);
+  };
+
+  //====== Set The Current Page Number
+  const SetTheCurrentPageNumberHandler = (value) => setCurrentPage(value);
+
+  //==== Get only 6 products per page
   const GetProductsByCategoryHandler = async (categorySlug) => {
     setIsProductsLoading(true);
     const res = await commerce.products.list({
-      category_slug: [categorySlug]
+      category_slug: [categorySlug],
+      limit: 6,
+      page: CurrentPage
     }).then(resonse => resonse.data);
     setAllProducts(res);
     setIsProductsLoading(false);
@@ -200,7 +226,7 @@ export const ContextProvider = ({ children }) => {
   const RefreshCartHandler = async () => setCart(await commerce.cart.refresh());
 
   //========= Favorite Page Handler
-  const AddToFavorites = (FavoriteProducts) => {
+  const AddToFavorite = (FavoriteProducts) => {
     setAllFavoritesContent((prevFavorites) => {
       return prevFavorites.concat(FavoriteProducts);
     });
@@ -256,12 +282,30 @@ export const ContextProvider = ({ children }) => {
 
   });
 
+  //========= Set Stripe Input Style
+  const stripeInputStylehandler = {
+    iconColor: customTheme.palette.colors.textColor,
+    color: customTheme.palette.colors.textColor,
+    accentColor: DarkModeStatus ? "#cfd0d4" : "#262626",
+    fontSize: "17px",
+    fontSmoothing: "antialiased",
+    ":-webkit-autofill": {
+      color: "transparent",
+    },
+    "::placeholder": {
+      color: customTheme.palette.colors.textColor,
+    },
+  };
+
   //========= All Required Data & Functions On The App.
   const context = {
     AllProducts,
+    AllProductsCount,
+    CurrentPage,
     TargetProduct,
     AllCategoryNames,
     FirstCategoryName,
+    CurrentSlug,
     Cart,
     CartIsEmpty,
     IsProductsLoading,
@@ -279,10 +323,14 @@ export const ContextProvider = ({ children }) => {
     DarkModeStatus,
     TokenId,
     customTheme,
+    stripeInputStyle: stripeInputStylehandler,
+    GetAllProductsCount: GetAllProductsCountHandler,
+    SetTheCurrentPageNumber: SetTheCurrentPageNumberHandler,
     GetProductById: GetProductByIdHandler,
     GetAllCategoryNames: AllCategoryNamesHandler,
     GetProductsByCategory: GetProductsByCategoryHandler,
     SetFirstCategoryName: SetFirstCategoryNameHandler,
+    SetCurrentSlug: SetCurrentSlugHandler,
     RetriveProduct: ProductRetrieveHandler,
     GetCartStatus: CheckCartHandler,
     SetCartEmptyStatus: CartChangeStatus,
@@ -304,7 +352,7 @@ export const ContextProvider = ({ children }) => {
     SetAllFavorites: SetAllFavoritesHandler,
     Favorites: AllFavoritesContent,
     TotalFavorites: AllFavoritesContent.length,
-    AddToFavorites,
+    AddToFavorite,
     RemoveFavoriteItem,
     ItemIsFavorite,
   };

@@ -6,7 +6,7 @@ import {
   CardElement,
   ElementsConsumer,
 } from "@stripe/react-stripe-js";
-import { Credit } from "assets";
+import Credit from "assets/Credit.png";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import MoneyIcon from "@mui/icons-material/Money";
 
@@ -35,19 +35,19 @@ const PaymentForm = () => {
     }
   };
 
-  const inputStyle = {
-    iconColor: CheckoutCtx.DarkModeStatus ? "#fff" : "#000",
-    color: CheckoutCtx.DarkModeStatus ? "#fff" : "#000",
-    accentColor: CheckoutCtx.DarkModeStatus ? "#cfd0d4" : "#262626",
-    fontSize: "17px",
-    fontSmoothing: "antialiased",
-    ":-webkit-autofill": {
-      color: "transparent",
-    },
-    "::placeholder": {
-      color: CheckoutCtx.DarkModeStatus ? "#fff" : "#000",
-    },
-  };
+  // const inputStyle = {
+  //   iconColor: CheckoutCtx.DarkModeStatus ? "#fff" : "#000",
+  //   color: CheckoutCtx.DarkModeStatus ? "#fff" : "#000",
+  //   accentColor: CheckoutCtx.DarkModeStatus ? "#cfd0d4" : "#262626",
+  //   fontSize: "17px",
+  //   fontSmoothing: "antialiased",
+  //   ":-webkit-autofill": {
+  //     color: "transparent",
+  //   },
+  //   "::placeholder": {
+  //     color: CheckoutCtx.DarkModeStatus ? "#fff" : "#000",
+  //   },
+  // };
 
   return (
     <PaymentStyled>
@@ -62,7 +62,7 @@ const PaymentForm = () => {
               <form onSubmit={(e) => handleSubmit(e, elements, stripe)}>
                 <br /> <br />
                 <CardElementStyled>
-                  <CardElement options={{ style: { base: inputStyle } }} />
+                  <CardElement options={{ style: { base: CheckoutCtx.stripeInputStyle } }} />
                 </CardElementStyled>
                 <br /> <br />
                 <Grid container spacing={2}>

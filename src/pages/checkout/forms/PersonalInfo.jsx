@@ -15,8 +15,10 @@ const PersonalInfo = () => {
   const CheckoutCtx = useContext(Context);
   const { register, handleSubmit } = useForm();
 
-  //=== UserName Regx Status & Pattern
-  const [userNameRegxError, setuserNameRegxError] = useState(false);
+  //=== First Name Regx Status & Pattern
+  const [firstNameRegxError, setFirstNameRegxError] = useState(false);
+  const [lastNameRegxError, setLastNameRegxError] = useState(false);
+
   const userNameRegx = /^[a-z]+$/i;
 
   //=== Email Regx Status & Pattern
@@ -44,10 +46,10 @@ const PersonalInfo = () => {
                   {...register("firstname")}
                   label="FirstName"
                   required
-                  error={userNameRegxError ? true : false}
-                  helperText={`${userNameRegxError ? "Invalid name special character and numbers not allowed" : ""}`}
-                  onInput={(e) => userNameRegx.test(e.target.value) ? setuserNameRegxError(false) : setuserNameRegxError(true)}
-                  onBlur={(e) => userNameRegx.test(e.target.value) ? setuserNameRegxError(false) : setuserNameRegxError(true)}
+                  error={firstNameRegxError ? true : false}
+                  helperText={`${firstNameRegxError ? "Invalid name, special character and numbers not allowed" : ""}`}
+                  onInput={(e) => userNameRegx.test(e.target.value) ? setFirstNameRegxError(false) : setFirstNameRegxError(true)}
+                  onBlur={(e) => userNameRegx.test(e.target.value) ? setFirstNameRegxError(false) : setFirstNameRegxError(true)}
                 />
               </Grid>
               <Grid item xs={12} md={6}>
@@ -57,10 +59,10 @@ const PersonalInfo = () => {
                   {...register("lastname")}
                   label="LastName"
                   required
-                  error={userNameRegxError ? true : false}
-                  helperText={`${userNameRegxError ? "Invalid name special character and numbers not allowed" : ""}`}
-                  onInput={(e) => userNameRegx.test(e.target.value) ? setuserNameRegxError(false) : setuserNameRegxError(true)}
-                  onBlur={(e) => userNameRegx.test(e.target.value) ? setuserNameRegxError(false) : setuserNameRegxError(true)}
+                  error={lastNameRegxError ? true : false}
+                  helperText={`${lastNameRegxError ? "Invalid name, special character and numbers not allowed" : ""}`}
+                  onInput={(e) => userNameRegx.test(e.target.value) ? setLastNameRegxError(false) : setLastNameRegxError(true)}
+                  onBlur={(e) => userNameRegx.test(e.target.value) ? setLastNameRegxError(false) : setLastNameRegxError(true)}
                 />
               </Grid>
               <Grid item xs={12} md={6}>

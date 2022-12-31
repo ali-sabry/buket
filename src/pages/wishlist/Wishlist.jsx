@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { Container, Grid, Typography, Button } from "@mui/material";
-import { EmptyWishListBanner } from "assets";
+import EmptyWishListBanner from "assets/Empty_Wishlist.png";
 
 import CustomCard from "components/global/card/Card";
 import Context from "store/Context";
@@ -28,7 +28,6 @@ const Wishlist = () => {
               </Typography>
               <Button variant="contained" type="button">
                 <NavLink
-                  style={{ color: !WishlistCtx.DarkModeStatus && "#000" }}
                   to="/"
                 >
                   shop now

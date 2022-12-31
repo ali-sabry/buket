@@ -53,11 +53,20 @@ const Header = () => {
 
   useEffect(() => {
     ProductsCtx.GetProductsByCategory(slug);
+    ProductsCtx.GetProductsByCategory(slug);
   }, [slug]);
+
+  useEffect(() => {
+    ProductsCtx.GetProductsByCategory(slug);
+  }, [ProductsCtx.CurrentPage]);
 
   useEffect(() => {
     setTotal(ProductsCtx.TotalFavorites);
   }, [total, ProductsCtx.TotalFavorites]);
+
+  useEffect(() => {
+    ProductsCtx.GetAllProductsCount();
+  }, [ProductsCtx.CurrentSlug]);
 
   return (
     <header>
@@ -108,7 +117,7 @@ const Header = () => {
                 >
                   <Badge
                     badgeContent={
-                      ProductsCtx.IsCartLoading ? ('...') : ProductsCtx.Cart.total_items
+                      ProductsCtx.IsCartLoading ? 0 : ProductsCtx.Cart.total_items
                     }
                     color="secondary"
                   >
@@ -171,7 +180,11 @@ const Header = () => {
                             <Tab
                               label={category.name}
                               key={index}
-                              onClick={() => setSlug(category.slug)}
+                              onClick={() => {
+                                setSlug(category.slug);
+                                ProductsCtx.SetCurrentSlug(category.slug);
+                                ProductsCtx.SetTheCurrentPageNumber(1);
+                              }}
                             />
                           ))}
                         </Tabs>

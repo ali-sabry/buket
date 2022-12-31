@@ -22,7 +22,7 @@ import {
 import CartContext from "store/Context";
 import ReadMoreIcon from "@mui/icons-material/ReadMore";
 
-const CustomCard = ({ product, cart }) => {
+const CustomCard = ({ product }) => {
   const ProductCtx = useContext(CartContext);
   const location = useLocation();
 
@@ -30,7 +30,7 @@ const CustomCard = ({ product, cart }) => {
     if (ProductCtx.ItemIsFavorite(product.id)) {
       ProductCtx.RemoveFavoriteItem(product.id);
     } else {
-      ProductCtx.AddToFavorites({
+      ProductCtx.AddToFavorite({
         id: product.id,
         name: product.name,
         image: product.image.url,

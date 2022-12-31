@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
 
 
-export const SummryStyled = styled(Box)(({ theme })=>`
+export const SummryStyled = styled(Box)(({ theme }) => `
 
 	ul {
 		background-color: ${theme.palette.colors.secondBg} !important;
@@ -33,7 +33,7 @@ export const SummryStyled = styled(Box)(({ theme })=>`
 `);
 
 
-export const ConfirmationStyled = styled(Box)(({ theme })=>`
+export const ConfirmationStyled = styled(Box)(({ theme }) => `
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -54,34 +54,36 @@ export const ConfirmationStyled = styled(Box)(({ theme })=>`
 		font-size: 25px;
 		color: ${theme.palette.colors.textColor};
 	};
-
-	   a {
+		a {
 		display: inline-block;
 		background-color: ${theme.palette.colors.primary};
-		color: #fff;
+		color: ${theme.palette.colors.textColor === "#fff" ? "#000" : "#fff"};
 		text-transform: capitalize;
-		opacity: .9;
 		width: 250px;
-	    padding: 15px 0;
-	    font-size: 20px;
-	    text-align: center;
+		padding: 9px 0;
+		font-size: 20px;
+		text-align: center;
+		
 		&:hover {
-		   opacity: 1;
-		   background-color: ${theme.palette.colors.primary};
+			background-color: ${theme.palette.colors.primary};
 		};
 	};
+
 	@media screen and (max-width: 600px) {
 		align-items: stretch;
+
 		img, .confirm-actions {
 	  		width: 100%;
 		};
+
 		.confirm-actions {
 			p {
 				font-size: 22px;
 			};
+
 			a {
 				display: inline-block;
-				padding: 9px 15px;
+				padding: 7px 30px;
 	    		font-size: 20px;
 	    		width: fit-content;
 			};

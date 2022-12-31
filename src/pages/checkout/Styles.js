@@ -40,4 +40,7 @@ export const CheckoutPage = styled('section')(({ theme }) => `
 		};
 	};
 
+	@media screen and (max-width: 600px) {
+		padding-bottom: 60px;
+	}
 `);

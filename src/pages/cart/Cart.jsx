@@ -17,8 +17,8 @@ import PaymentIcon from "@mui/icons-material/Payment";
 import Context from "store/Context";
 import CustomCard from "components/global/card/Card";
 import Loader from "components/global/loader/Loader";
-import { EmptyCartBanner } from "assets";
-import { EmptyCard, CartSection, CartActions } from "./Styles";
+import EmptyCartBanner from "assets/Empty_Cart.png";
+import { EmptyCart, CartSection, CartActions } from "./Styles";
 
 const Cart = () => {
   const CartCtx = useContext(Context);
@@ -44,7 +44,7 @@ const Cart = () => {
             position="fixed"
           />
         ) : CartCtx.CartIsEmpty ? (
-          <EmptyCard>
+          <EmptyCart>
             <img src={EmptyCartBanner} alt="empty_cart" />
             <div>
               <Typography variant="body2">
@@ -53,14 +53,13 @@ const Cart = () => {
               </Typography>
               <Button variant="contained" type="button">
                 <NavLink
-                  style={{ color: !CartCtx.DarkModeStatus && "#000" }}
                   to="/"
                 >
                   shop now
                 </NavLink>
               </Button>
             </div>
-          </EmptyCard>
+          </EmptyCart>
         ) : (
           <Grid container spacing={2}>
             <Grid item xs={12}>

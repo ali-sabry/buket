@@ -4,6 +4,7 @@
   },
   "include": [
     "src",
-    "src/pages"
+    "src/pages",
+    "src/assets"
   ]
 }
