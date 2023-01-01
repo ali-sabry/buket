@@ -1,4 +1,0 @@
-[[redirects]] 
-    from: "/*"
-    to: "/page404.jsx"
-    status: 404

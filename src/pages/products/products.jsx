@@ -16,6 +16,7 @@ const Products = () => {
   const [page, setPage] = useState(1);
 
   const pagintionCount = Math.ceil(ProductsCtx.AllProductsCount / 6);
+  let showMsg = false;
 
   const handleChange = (event, value) => {
     ProductsCtx.SetTheCurrentPageNumber(value);
@@ -46,13 +47,13 @@ const Products = () => {
               {
                 SearchValue ?
                   <>
-                    {ProductsCtx.AllProducts.filter((product) => product.name.toLowerCase().includes(SearchValue)
-                    ).map((product) => <CustomCard key={product.id} product={product} />)}
-                    <EmptySearchMsg>Not Found Products With The Search Keyword.</EmptySearchMsg>
+                    {
+                      ProductsCtx.AllProducts.filter((product) => product.name.toLowerCase().includes(SearchValue)).length === 0 ?
+                        <EmptySearchMsg>Not Found Products With The Search Keyword.</EmptySearchMsg>
+                        : ProductsCtx.AllProducts.map((product) => product.name.toLowerCase().includes(SearchValue) && <CustomCard key={product.id} product={product} />)
+                    }
                   </> :
-                  ProductsCtx.AllProducts.map((product) =>
-                    <CustomCard key={product.id} product={product} />
-                  )
+                  ProductsCtx.AllProducts.map((product) => <CustomCard key={product.id} product={product} />)
               }
             </Grid>
         }
