@@ -47,6 +47,8 @@ export const EmptySearchMsg = styled('h4')(() => `
   color: red;
   margin-left: 15px;
   margin-top: 15px;
+  text-align: center;
+  width: 100%;
 `);
 
 export const PaginationWrapper = styled('div')(({ theme }) => `
@@ -70,6 +72,14 @@ export const PaginationWrapper = styled('div')(({ theme }) => `
       button.Mui-selected {
         background-color: ${theme.palette.colors.primary};
         opacity: 1;
+      };
+
+      button.MuiPaginationItem-previousNext {
+        opacity: 1
+      };
+
+      button.Mui-disabled {
+        opacity: .38
       };
     };
   }

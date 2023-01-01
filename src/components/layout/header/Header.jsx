@@ -150,7 +150,7 @@ const Header = () => {
                         <SearchIcon />
                       </SearchIconWrapper>
                       <StyledInputBase
-                        placeholder="Search…"
+                        placeholder="Search By Product Name…"
                         inputProps={{ "aria-label": "search" }}
                         onChange={(e) => ProductsCtx.SetSearchValue(e.target.value)}
                       />

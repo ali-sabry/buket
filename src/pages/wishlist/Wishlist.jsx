@@ -5,7 +5,7 @@ import EmptyWishListBanner from "assets/Empty_Wishlist.png";
 
 import CustomCard from "components/global/card/Card";
 import Context from "store/Context";
-import { WishlistPage, EmptyWishList } from "./Styles";
+import { WishlistPage, EmptyWishList, RemoveAllAction } from "./Styles";
 
 const Wishlist = () => {
   const WishlistCtx = useContext(Context);
@@ -36,16 +36,24 @@ const Wishlist = () => {
             </div>
           </EmptyWishList>
         ) : (
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <Typography className="heading" variant="h4">
-                The Wishlist
-              </Typography>
+          <>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <Typography className="heading" variant="h4">
+                  The Wishlist
+                </Typography>
+              </Grid>
+              {WishlistCtx.Favorites.map((product, index) => (
+                <CustomCard key={index} product={product} />
+              ))}
+
             </Grid>
-            {WishlistCtx.Favorites.map((product, index) => (
-              <CustomCard key={index} product={product} />
-            ))}
-          </Grid>
+            <RemoveAllAction>
+              <Button onClick={() => WishlistCtx.RemoveAllFavorites()} variant="contained" type="button">
+                Remove All
+              </Button>
+            </RemoveAllAction>
+          </>
         )}
       </Container>
     </WishlistPage>

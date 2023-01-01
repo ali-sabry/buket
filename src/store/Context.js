@@ -59,6 +59,7 @@ const Context = createContext({
   SetAllFavorites: (value) => { },
   AddToFavorite: (FavoriteMovies) => { },
   RemoveFavoriteItem: (MovieId) => { },
+  RemoveAllFavorites: () => { },
   ItemIsFavorite: (MovieId) => { },
 });
 
@@ -90,7 +91,7 @@ export const ContextProvider = ({ children }) => {
   const [DarkModeStatus, setDarkModeStatus] = useState(true);
   const [AllFavoritesContent, setAllFavoritesContent] = useState([]);
 
-  //======== Home Page Helpers
+  //**************** ======== Home Page Helpers
   const GetProductByIdHandler = async (productId) => {
     const res = await commerce.products.list({ query: productId });
     setTargetProduct(res.data);
@@ -142,7 +143,7 @@ export const ContextProvider = ({ children }) => {
 
   const SetDarkModeStatusHandler = (value) => setDarkModeStatus(value);
 
-  //========= Cart Page Helpers
+  //**********========= Cart Page Helpers
   const CheckCartHandler = async (cart) => {
     const CartStatus = await cart.total_items === 0 ? true : false;
     setCartIsEmpty(CartStatus);
@@ -171,7 +172,7 @@ export const ContextProvider = ({ children }) => {
     setCart(cart);
   };
 
-  //====== Checkout Page helpers .
+  //*****************====== Checkout Page helpers .
   const GenerateTokenHandler = async (cartId, name) => {
     const res = await commerce.checkout.generateToken(cartId, { type: name }).then(result => result);
     setTokenId(res);
@@ -225,7 +226,7 @@ export const ContextProvider = ({ children }) => {
 
   const RefreshCartHandler = async () => setCart(await commerce.cart.refresh());
 
-  //========= Favorite Page Handler
+  //******************** ========= Favorite Page Handler
   const AddToFavorite = (FavoriteProducts) => {
     setAllFavoritesContent((prevFavorites) => {
       return prevFavorites.concat(FavoriteProducts);
@@ -239,6 +240,8 @@ export const ContextProvider = ({ children }) => {
       return prevFavorites.filter((product) => product.id !== ProductId);
     });
   };
+
+  const RemoveAllFavorites = () => setAllFavoritesContent([]);
 
   const ItemIsFavorite = (productId) => {
     const FavStatus = AllFavoritesContent.some((product) => product.id === productId);
@@ -354,6 +357,7 @@ export const ContextProvider = ({ children }) => {
     TotalFavorites: AllFavoritesContent.length,
     AddToFavorite,
     RemoveFavoriteItem,
+    RemoveAllFavorites,
     ItemIsFavorite,
   };
 
