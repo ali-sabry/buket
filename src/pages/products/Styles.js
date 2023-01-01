@@ -65,7 +65,7 @@ export const PaginationWrapper = styled('div')(({ theme }) => `
         opacity: .5;
 
         &:hover {
-         background-color: ${theme.palette.colors.primary};
+         background-color: ${theme.palette.colors.primary} !important;
         }
       };
 

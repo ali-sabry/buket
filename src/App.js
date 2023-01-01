@@ -26,7 +26,6 @@ import Context from "./store/Context";
 const App = () => {
   const ProductsCtx = useContext(Context);
 
-
   useEffect(() => {
     ProductsCtx.RetriveProduct();
     ProductsCtx.GetAllProductsCount();
@@ -51,10 +50,6 @@ const App = () => {
   useEffect(() => {
     ProductsCtx.GetCartStatus(ProductsCtx.Cart);
   }, [ProductsCtx.Cart]);
-
-  // useEffect(() => {
-  //   ProductsCtx.GetProductsByCategory('all');
-  // }, [ProductsCtx.CurrentPage]);
 
   return (
     <ThemeProvider theme={ProductsCtx.customTheme}>

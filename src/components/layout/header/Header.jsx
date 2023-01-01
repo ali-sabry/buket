@@ -53,12 +53,7 @@ const Header = () => {
 
   useEffect(() => {
     ProductsCtx.GetProductsByCategory(slug);
-    ProductsCtx.GetProductsByCategory(slug);
-  }, [slug]);
-
-  useEffect(() => {
-    ProductsCtx.GetProductsByCategory(slug);
-  }, [ProductsCtx.CurrentPage]);
+  }, [slug, ProductsCtx.CurrentPage]);
 
   useEffect(() => {
     setTotal(ProductsCtx.TotalFavorites);
